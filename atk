@@ -1,0 +1,41 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ShoppingCart } from "lucide-react";
+
+const products = [
+  { id: 1, name: "Pulpen", price: 5000, image: "/images/pulpen.jpg" },
+  { id: 2, name: "Buku Tulis", price: 15000, image: "/images/buku_tulis.jpg" },
+  { id: 3, name: "Stapler", price: 20000, image: "/images/stapler.jpg" },
+  { id: 4, name: "Penghapus", price: 3000, image: "/images/penghapus.jpg" },
+  { id: 5, name: "Pensil", price: 4000, image: "/images/pensil.jpg" },
+  { id: 6, name: "Penggaris", price: 7000, image: "/images/penggaris.jpg" },
+  { id: 7, name: "Map Plastik", price: 10000, image: "/images/map_plastik.jpg" },
+  { id: 8, name: "Tip Ex", price: 12000, image: "/images/tip_ex.jpg" },
+];
+
+export default function OfficeSuppliesShop() {
+  return (
+    <div className="container mx-auto p-6">
+      <h1 className="text-3xl font-bold text-center mb-6">Toko Alat Tulis Kantor</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <Card key={product.id} className="p-4 shadow-lg rounded-2xl">
+            <img 
+              src={product.image} 
+              alt={product.name} 
+              className="w-full h-48 object-cover mb-4 rounded-xl" 
+            />
+            <CardContent className="text-center">
+              <h2 className="text-lg font-semibold text-gray-900">{product.name}</h2>
+              <p className="text-gray-600">Rp {product.price.toLocaleString()}</p>
+              <Button className="mt-4 w-full flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg">
+                <ShoppingCart size={16} /> Tambah ke Keranjang
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
